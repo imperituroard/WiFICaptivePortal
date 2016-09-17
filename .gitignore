@@ -10,8 +10,7 @@
 /log/*
 !/log/.keep
 /tmp
-/config/secrets.yml
-/config/database.yml
-/config/smsc.yml
+/config/*.yml
+
 bundler_stubs/
 ##
