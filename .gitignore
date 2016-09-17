@@ -14,3 +14,4 @@
 config/database.yml
 config/smsc.yml
 bundler_stubs/
+##
