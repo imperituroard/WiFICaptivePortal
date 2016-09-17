@@ -1,8 +1,0 @@
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
-  username: imperituroard
-  password: FdE3G5jQ89mef2mj03H1Bf789
-  host: 134.17.0.25
-  port: 3306
