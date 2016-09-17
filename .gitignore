@@ -6,13 +6,12 @@
 
 # Ignore bundler config.
 /.bundle
-/.idea/*
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
 /config/secrets.yml
-config/database.yml
-config/smsc.yml
+/config/database.yml
+/config/smsc.yml
 bundler_stubs/
 ##
