@@ -11,6 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
-/config/database.yml
-/config/smsc.yml
+config/database.yml
+config/smsc.yml
 bundler_stubs/
