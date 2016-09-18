@@ -11,6 +11,6 @@
 !/log/.keep
 /tmp
 /config/*.yml
-
+/config/Parameters/*
 bundler_stubs/
 ##
