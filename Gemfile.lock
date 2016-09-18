@@ -198,6 +198,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2 (>= 0.3.13, < 0.5)
+  nokogiri
   rails (= 4.2.5.rc2)
   ruby-smpp
   sass-rails (~> 5.0)
@@ -210,4 +211,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.12.5
+   1.13.1

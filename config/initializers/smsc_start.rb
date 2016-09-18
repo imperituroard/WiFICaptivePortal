@@ -10,34 +10,16 @@
 
 require 'rubygems'
 require 'smpp'
-require '../../lib/mts/sms_samplegateway'
+require '../../lib/mts/SMSC/sms_samplegateway'
 require '../../config/Parameters/params'
+require '../../lib/mts/SMSC/KeyboardHandler'
 
 LOGFILE = File.dirname(__FILE__) + "/sms_gateway.log"
 Smpp::Base.logger = Logger.new(LOGFILE)
 
 # We use EventMachine to receive keyboard input (which we send as MT messages).
 # A "real" gateway would probably get its MTs from a message queue instead.
-module KeyboardHandler
-  include EventMachine::Protocols::LineText2
 
-  def receive_line(data)
-    sender, receiver, *body_parts = data.split
-    unless sender && receiver && body_parts.size > 0
-      puts "Syntax: <sender> <receiver> <message body>"
-    else
-      body = body_parts.join(' ')
-      puts "Sending MT from #{sender} to #{receiver}: #{body}"
-      SampleGateway.send_mt(sender, receiver, body)
-    end
-    prompt
-  end
-
-  def prompt
-    print "MT: "
-    $stdout.flush
-  end
-end
 
 #include SampleGateway
 

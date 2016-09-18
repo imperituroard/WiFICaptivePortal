@@ -1,9 +1,11 @@
 class SayHelloController < ApplicationController
   def say
+    a=params[:phone_field]
+
   end
 
   def sum
-   # require_relative '../../lib/mts/smsc_gatewaytest'
+
   end
 
   def sendsms(number=375298766719, b)
