@@ -23,10 +23,16 @@ class CPS_procedures
       namespace "http://broadhop.com/unifiedapi/soap/types"
     end
 
-    client.call(:get_subscriber) do
+    response = client.call(:get_subscriber) do
       message(networkId: msisdn)
     end
     #puts "all done"
+    #response = client.call(:authenticate, message: message)
+
+    #http://savonrb.com/version2/response.html
+
+    answer = response.to_xml
+    puts answer
 
     #response = client.call(:get_subscriber, message: {first_name: "foo" ,last_name: "foo"})
     #hasher = client.to_hash
