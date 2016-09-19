@@ -1,6 +1,7 @@
 class SayHelloController < ApplicationController
   def say
     a=params[:phone_field]
+    puts a
 
   end
 
