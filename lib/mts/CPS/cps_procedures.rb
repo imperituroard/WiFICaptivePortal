@@ -1,4 +1,6 @@
 #cps
+#http://savonrb.com/version2/response.html
+
 require 'openssl'
 require 'savon'
 require 'rubygems'
@@ -29,10 +31,11 @@ class CPS_procedures
     #puts "all done"
     #response = client.call(:authenticate, message: message)
 
-    #http://savonrb.com/version2/response.html
+
 
     answer = response.to_xml
-    puts answer
+    return answer
+    #puts answer
 
     #response = client.call(:get_subscriber, message: {first_name: "foo" ,last_name: "foo"})
     #hasher = client.to_hash

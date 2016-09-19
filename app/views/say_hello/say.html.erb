@@ -1,3 +1,5 @@
+<%= form_tag '/' do %>
+
 <html>
 <head>
   <title>МТС - WiFI portal</title>
@@ -51,9 +53,10 @@
        </ul>
      </nav> -->
     <p>Введите номер телефона</p>
-    <%= text_area_tag(:phone_field, "+375") %>
+
+    <%= telephone_field_tag(:phone_number, @phone_number ) %>
     <p></p>
-    <%= button_to "Отправить временный пароль", :action => 'say' %>
+    <%= button_to "Отправить временный парmоль", :action => 'sendsms' %>
 
   </div>
   <!--
@@ -71,3 +74,5 @@
 </body>
 
 </html>
+<% end %>
+<%= @mm%>

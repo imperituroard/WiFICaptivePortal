@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
+  get 'goods/testgood'
+
+  get 'todo/index'
+
   get 'send_sms/send'
 
   get 'test/test'
 
   get 'say_hello/SendSms'
-
-  post '' => 'say_hello#sum', as: 'sum'
   post '' => 'say_hello#say', as: 'say'
+  post '' => 'say_hello#sendsms', as: 'sendsms'
+
+  #post '' => 'say_hello#sum', as: 'sum'
+  #post '' => 'say_hello#say', as: 'say'
 
   #root :to => 'SayHello#say', :as => 'SayHello'
   #map.root :SayHello#say => 'say'
@@ -32,6 +38,11 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  resources :say_hello
+
+  namespace "admin" do
+    resources :goods
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do

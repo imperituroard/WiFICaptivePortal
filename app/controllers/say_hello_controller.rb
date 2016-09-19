@@ -1,7 +1,24 @@
+
+#http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html#method-i-telephone_field_tag
+#http://rusrails.ru/rails-form-helpers#understanding-parameter-naming-conventions
+#require 'rubygems'
+#require 'smpp'
+#require '../../lib/mts/SMSC/sms_samplegateway'
+#require '../../config/Parameters/params'
+#require '../../lib/mts/SMSC/KeyboardHandler'
+
+
 class SayHelloController < ApplicationController
+
+
+
   def say
-    a=params[:phone_field]
-    puts a
+
+    @phone = params["phone_number"]
+    @phone_number  = "375298766719"
+    as= GetSubscriber(@phone)
+    @phone_number=as
+
 
   end
 
@@ -9,8 +26,15 @@ class SayHelloController < ApplicationController
 
   end
 
-  def sendsms(number=375298766719, b)
-  number+b
+
+  def calc
+
+  end
+
+  def sendsms(phone)
+
+
+
   end
 
 end
