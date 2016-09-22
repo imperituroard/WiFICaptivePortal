@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 #for my first test commit
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.rc2'
+gem 'rails' #, '4.2.5.rc2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
@@ -20,6 +20,15 @@ gem  'iconv'
 #C:\Program Files (x86)\GnuWin32
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+#yujyt
+#gem  'qtbindings'
+#gem 'rubius'
+#gem 'login_radius', '~>2.0.0'
+gem 'railties'
+gem 'devise'
+#gem 'radiustar'
+#gem 'devise-radius-authenticatable'
+gem 'ruby-radius'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
