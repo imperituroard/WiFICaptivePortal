@@ -13,16 +13,16 @@ require 'socket'
 
 user = 'test'
 pass = 'test'
-authhost = '127.0.0.1';
+authhost = '172.24.207.33';
 authport = '1812';
 secret = 'h1dd3n';
 dictfile = "../dictionary"
 
-dict = Radius::Dict.new
-File.open(dictfile) {
-    |fn|
-  dict.read(fn)
-}
+dict = Radius::Dictionary.new
+#File.open(dictfile) {
+#    |fn|
+#  dict.read(fn)
+#}
 
 def bigrand()
   return([rand(65536), rand(65536), rand(65536), rand(65536),
@@ -37,7 +37,7 @@ req.authenticator = bigrand()
 req.set_attr('NAS-IP-Address', '127.0.0.1')
 req.set_attr('User-Name', user)
 req.set_password(pass, secret)
-print req.to_s(nil) + "\n"
+print req.to_s() + "\n"
 p = req.pack
 print p.unpack("H*"), "\n"
 print "Socket connecting\n"

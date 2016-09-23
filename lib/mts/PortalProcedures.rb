@@ -1,46 +1,41 @@
 require './lib/mts/SMSC/MTSsmsc'
-
+require './lib/mts/Database/DatabaseIntegration'
+require 'pru'
+require 'rubygems'
 class WiFIPortalProcedures
 
   def checkVerificationCode
 
   end
 
+
   def sendVerificationSMS(msisdn)
-    code = rand(9999999)
-    df=MTSsmsc.new
-    df.startSMSC(1,'MTS.WiFI', msisdn,"All Works !!! code^ #{code}")
+   # msisdn.to_s
+   # p num = msisdn.gsub!('+','')
+   # l = 12#num.to_s.length
+   # puts l
+    #puts request.remote_ip
+    #beginnum = num[0] + num[1] + num[2]
+    #beginnum1 = num[0].to_s + num[1].to_s
+   # beginnum1=beginnum="375"
+
+    #if (beginnum == "375" && l == 12) or (beginnum1 == "80" && l == 11)
+        #subs_msisdn = msisdn.gsub!('+','')
+        code = rand(9999999)
+        df=MTSsmsc.new
+        df.startSMSC(25,'MTS.WiFI', msisdn,"Your verification code for MTS WiFI: #{code}")
+        ipaddr="172242246"
+        usern ="username"
+        id = rand(999999999999)+1+2
+        db=DatabaseIntegration.new
+        db.writeCodeVerification(id, usern, ipaddress=ipaddr, code, msisdn, "reserv2")
+    #else
+
+   # end
   end
 
 
-  def remote_ip
-    remote_addr_list = @env['REMOTE_ADDR'] && @env['REMOTE_ADDR'].scan(/[^,\s]+/)
 
-    unless remote_addr_list.blank?
-      not_trusted_addrs = remote_addr_list.reject {|addr| addr =~ TRUSTED_PROXIES}
-      return not_trusted_addrs.first unless not_trusted_addrs.empty?
-    end
-    remote_ips = @env['HTTP_X_FORWARDED_FOR'] && @env['HTTP_X_FORWARDED_FOR'].split(',')
-
-    if env.include? 'HTTP_CLIENT_IP'
-      if ActionController::Base.ip_spoofing_check && remote_ips && !remote_ips.include?(@env['HTTP_CLIENT_IP'])
-        # We don't know which came from the proxy, and which from the user
-        raise ActionControllerError.new("IP spoofing attack?!\nHTTP_CLIENT_IP=\#{@env['HTTP_CLIENT_IP'].inspect}\nHTTP_X_FORWARDED_FOR=\#{@env['HTTP_X_FORWARDED_FOR'].inspect}\n")
-      end
-
-      return @env['HTTP_CLIENT_IP']
-    end
-
-    if remote_ips
-      while remote_ips.size > 1 && TRUSTED_PROXIES =~ remote_ips.last.strip
-        remote_ips.pop
-      end
-
-      return remote_ips.last.strip
-    end
-
-    @env['REMOTE_ADDR']
-  end
 
 
 end

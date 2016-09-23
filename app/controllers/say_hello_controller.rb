@@ -34,6 +34,7 @@ class SayHelloController < ApplicationController
     @phone = params["phone_number"]
 
     @phone_input=@phone
+    #p @phone.remote_ip
 
     #require 'SMS'
     #@phone_number=@phone_output

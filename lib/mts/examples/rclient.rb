@@ -9,7 +9,7 @@
 #
 require 'radius/auth'
 
-auth = Radius::Auth.new('../dictionary', '127.0.0.1', 5)
+auth = Radius::Auth.new('../dictionary', '172.24.207.33', 5)
 secret = 'h1dd3n'
 print "login: "
 user = $stdin.readline
@@ -17,7 +17,7 @@ user.chomp!
 print "Password: "
 pass = $stdin.readline
 pass.chomp!
-if (auth.check_passwd(user, pass, secret, '127.0.0.1'))
+if (auth.check_passwd(user, pass, secret, '172.24.207.33'))
   print "Authentication successful.\n"
 else
   print "Authentication failed.\n"
