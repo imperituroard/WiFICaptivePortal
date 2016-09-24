@@ -58,6 +58,45 @@ class SayHelloController < ApplicationController
   end
 
   def sum
+
+    load File.dirname(__FILE__) + '/test_helper.rb'
+
+    describe "Test Suite" do
+      include TestHelper
+
+      before(:all) do
+        @browser = $browser = Selenium::WebDriver.for(browser_type)
+        @browser.navigate.to(site_url)
+
+        @base_url = "http://url/"
+        @accept_next_alert = true
+
+        @verification_errors = []
+      end
+
+      after(:all) do
+        @browser.quit unless debugging?
+      end
+
+      it "New Test Case" do
+
+
+        @browser.find_element(:name, "user_login").send_keys("root")
+        @browser.find_element(:name, "user_pass").send_keys("1111")
+        @browser.find_element(:name, "phrase").send_keys("FFFFFF")
+        @browser.find_element(:xpath,"//input[@value='Вход']").click
+        driver.get "http://URL"
+        @browser.find_element(:name, "title").send_keys("Тест3")
+        @browser.find_element(:name, "text").send_keys("тестовый тест")
+        @browser.find_element(:xpath,"//input[@value='Запись']").click
+        driver.get "http://URL"
+        @browser.find_element(:css, "html body table tbody tr td table tbody tr td a:nth-child(2)").click
+
+      end
+    end
+
+
+
     @phone = params["phone_number"]
 
     @phone_input=@phone
@@ -77,12 +116,10 @@ class SayHelloController < ApplicationController
       #@phone_number=fe
 
       df = WiFIPortalProcedures.new
-      df.sendVerificationSMS(@phone_input, request.remote_ip)
+      cod=df.sendVerificationSMS(@phone_input, request.remote_ip)
+if cod == 1
 
-      as = request.remote_ip
-      ba = request.env["REMOTE_ADDR"]
-      p "as = " + as
-      p "ba = " + ba
+ end
     end
 
   end
