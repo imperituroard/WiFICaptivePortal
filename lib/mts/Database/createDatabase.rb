@@ -12,4 +12,4 @@ client = Mysql2::Client.new(:host => host_db, :username => username_db, :passwor
 #, PRIMARY KEY (UserID)
 client.query("CREATE  DATABASE IF NOT EXISTS mtsPortalWiFI", :cast => false)
 client.query("USE mtsPortalWiFI", :cast => false)
-client.query("CREATE TABLE IF NOT EXISTS users_wifi (UserID INT NOT NULL, username  VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci, time TIMESTAMP, ipaddress INT(10) unsigned NOT NULL default '0', verificationcode VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci, msisdn VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci, reserv2 VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci)", :cast => false)
+client.query("CREATE TABLE IF NOT EXISTS users_wifi (UserID INT NOT NULL, time TIMESTAMP, ipaddress INT(10) unsigned NOT NULL default '0', verificationcode VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci, msisdn VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci, reserv2 VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci)", :cast => false)

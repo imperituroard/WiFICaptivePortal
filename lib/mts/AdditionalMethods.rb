@@ -1,6 +1,35 @@
 
 class AdditionalMethods
 
+  def msisdnverification(msisdn)
+    msisdn.to_s
+    beginnum = msisdn[0] + msisdn[1] + msisdn[2]
+    beginnum1 = msisdn[0] + msisdn[1]
+    if msisdn.length == 12 || msisdn.length==11 || msisdn.length == 13
+        if msisdn[0]=='+'
+          msisdn = msisdn.gsub!('+','')
+          beginnum = msisdn[0] + msisdn[1] + msisdn[2]
+          if beginnum == '375'
+            return msisdn
+          else return 1
+          end
+        else
+          if beginnum == '375'
+            return msisdn
+          else
+            if beginnum1 == '80' && msisdn.length ==11
+              msisdn = '375' + msisdn[2]+msisdn[3]+msisdn[4]+msisdn[5]+msisdn[6]+msisdn[7]+msisdn[8]+msisdn[9]+msisdn[10]
+              return msisdn
+            else return 1
+            end
+          end
+        end
+      else return 1
+    end
+  end
+
+
+
   def remote_ip(env)
     remote_addr_list = env['REMOTE_ADDR'] && env['REMOTE_ADDR'].scan(/[^,\s]+/)
 

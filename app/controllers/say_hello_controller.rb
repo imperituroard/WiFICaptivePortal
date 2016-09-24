@@ -50,7 +50,7 @@ class SayHelloController < ApplicationController
       #@phone_number=fe
 
       df = WiFIPortalProcedures.new
-      df.sendVerificationSMS(@phone_input)
+      #df.sendVerificationSMS(@phone_input)
       #Url::to(['/products/index', 'id' => $someId])
 
     end
@@ -78,7 +78,7 @@ class SayHelloController < ApplicationController
 
       df = WiFIPortalProcedures.new
       df.sendVerificationSMS(@phone_input, request.remote_ip)
-      p ActionDispatch::RemoteIp
+
       as = request.remote_ip
       ba = request.env["REMOTE_ADDR"]
       p "as = " + as

@@ -1,6 +1,6 @@
 require 'net/ssh'
-require '../../../config/Parameters/params'
-
+#require '../../../config/Parameters/params'
+require './config/Parameters/params'
 class MTSssh
 
   def carcommand(ipaddr)

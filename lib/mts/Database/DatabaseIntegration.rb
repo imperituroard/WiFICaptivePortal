@@ -13,12 +13,12 @@ class DatabaseIntegration
     host_db1 = u.database_host
     client = Mysql2::Client.new(:host => host_db1, :username => username_db1, :password => password_db1)
     client.query("use mtsPortalWiFI", :cast => false)
-    client.query("SELECT verificationcode FROM users_wifi WHERE ipaddress=#{ipaddress} ORDER BY time DESC LIMIT 1",:as => :array).each do |row|
+    client.query("SELECT verificationcode FROM users_wifi WHERE ipaddress=INET_NTOA('#{ipaddress}') ORDER BY time DESC LIMIT 1",:as => :array).each do |row|
       return row [0]
     end
   end
 
-  def writeCodeVerification(userid, username, ipaddress, verificationcode, msisdn, reserv2 = "test2")
+  def writeCodeVerification(userid, ipaddress, verificationcode, msisdn, reserv2 = "test2")
     u=Parameters.new
 
     username_db = u.database_username
@@ -29,7 +29,7 @@ class DatabaseIntegration
 #result = client.query("SELECT * FROM table", :cast => false)
     client.query("use mtsPortalWiFI", :cast => false)
     currenttime=Time.now
-    client.query("INSERT INTO users_wifi  (UserID, username, time, ipaddress, verificationcode, msisdn, reserv2) VALUES(#{userid}, #{username}, CURRENT_TIMESTAMP, INET_ATON('#{ipaddress}'), #{verificationcode}, #{msisdn}, #{reserv2})", :cast => false)
+    client.query("INSERT INTO users_wifi  (UserID, time, ipaddress, verificationcode, msisdn, reserv2) VALUES(#{userid}, CURRENT_TIMESTAMP, INET_ATON('#{ipaddress}'), #{verificationcode}, #{msisdn}, #{reserv2})", :cast => false)
   end
 
 
