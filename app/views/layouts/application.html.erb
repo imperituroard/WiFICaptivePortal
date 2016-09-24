@@ -1,3 +1,48 @@
+<html>
+<head>
+  <title>МТС - WiFI portal</title>
+  <nav>
+    <div class="logo-box">
+      <h1 class="logo">
+        <a href="/">
+          <img src="http://i6.imageban.ru/out/2016/09/11/2d547461679ab8a43336475d5026a873.png">
+        </a>
+      </h1>
+    </div>
+    <ul>
+      <li><a href="http://www.mts.by">Сайт МТС</a></li>
+      <li><a href="http://www.mts.by/contacts">Контакты</a></li>
+      <li><a href="https://internet.mts.by">Личный кабинет</a></li>
+      <li><a href="https://help.mts.by/hc/ru/requests/new">Онлайн поддержка </a></li>
+    </ul>
+  </nav>
+  <meta charset="UTF-8">
+  <%= stylesheet_link_tag "styles"%>
+  <%= stylesheet_link_tag "forphones"%>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!--[if lt IE 9]>
+  <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+  <![endif]-->
+</head>
+<body text-align:center>
+<div id="pagewrap">
+  <header id="header">
+  </header>
+  <!--
+  <aside id="sidebar">
+    <section class="widget">
+      widget
+    </section>
+  </aside>
+  -->
+  <footer id="footer">
+    СООО Мобильные ТелеСистемы. Все права защищены
+  </footer>
+</div>
+</body>
+</html>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +52,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 <%= yield %>
-
 </body>
 </html>

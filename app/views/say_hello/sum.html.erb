@@ -49,9 +49,9 @@
        </ul>
      </nav> -->
     <p>Код подтверждения отправлен</p>
-    <%= text_area_tag(:phone_field, "") %>
+    <%= text_area_tag(:verifcode, @verifcode ) %>
     <p></p>
-    <%= button_to "Подтвердить", :action => 'say' %>
+    <%= button_to "Подтвердить", :action => 'verifycode' %>
 
   </div>
   <!--

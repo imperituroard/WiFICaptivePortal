@@ -1,18 +1,6 @@
-class Class
+require '../../../lib/mts/Database/DatabaseIntegration'
 
-  def ard(a=9)
-    return a+1
-  end
 
-end
-
-class Name
-
-end
-
-class Dima
-
-end
-
-n = Class.ard(2)
-puts n
+fg = DatabaseIntegration.new
+a=fg.selectCodeVerification(375298766719)
+puts a

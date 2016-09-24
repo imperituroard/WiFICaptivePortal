@@ -16,7 +16,7 @@ require './lib/mts/CPS/cps_procedures'
 #require './lib/mts/SMSC/sms_samplegateway'
 
 require 'rubygems'
-
+require 'action_pack'
 #require './config/Parameters/params'
 #require './lib/mts/SMSC/KeyboardHandler'
 
@@ -51,27 +51,68 @@ class SayHelloController < ApplicationController
 
       df = WiFIPortalProcedures.new
       df.sendVerificationSMS(@phone_input)
+      #Url::to(['/products/index', 'id' => $someId])
+
     end
-
-
-
-
 
   end
 
   def sum
+    @phone = params["phone_number"]
+
+    @phone_input=@phone
+    #p @phone.remote_ip
+
+    #require 'SMS'
+    #@phone_number=@phone_output
+
+    if @phone_input != nil
+      #df=CPS_procedures.new
+      #puts @phone_input
+      #fe = df.GetSubscriber(@phone_input)
+      #param_smsc = Parameters.new
+      #config = param_smsc.smsc
+      #gw = SampleGateway.new
+      #gw.start(config)
+      #@phone_number=fe
+
+      df = WiFIPortalProcedures.new
+      df.sendVerificationSMS(@phone_input, request.remote_ip)
+      p ActionDispatch::RemoteIp
+      as = request.remote_ip
+      ba = request.env["REMOTE_ADDR"]
+      p "as = " + as
+      p "ba = " + ba
+    end
 
   end
 
 
-  def calc
+  def verifycode
+    @verif = params["verifcode"]
+    puts @verif
 
+    @verif_input=@phone
+    #p @phone.remote_ip
+
+    #require 'SMS'
+    #@phone_number=@phone_output
+
+    if @verif_input != nil
+      #df=CPS_procedures.new
+      #puts @phone_input
+      #fe = df.GetSubscriber(@phone_input)
+      #param_smsc = Parameters.new
+      #config = param_smsc.smsc
+      #gw = SampleGateway.new
+      #gw.start(config)
+      #@phone_number=fe
+
+      df = WiFIPortalProcedures.new
+      df.checkVerificationCode()
+    end
   end
 
-  def sendsms
 
-
-
-  end
 
 end

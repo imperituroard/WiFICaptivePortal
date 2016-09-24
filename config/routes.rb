@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'say_hello/verify'
+
   get 'goods/testgood'
 
   get 'todo/index'
@@ -8,7 +10,8 @@ Rails.application.routes.draw do
   get 'test/test'
 
   get 'say_hello/SendSms'
-  post '' => 'say_hello#say', as: 'say'
+  post '' => 'say_hello#sum', as: 'sum'
+  post '' => 'say_hello#verifycode', as: 'verifycode'
   post '' => 'say_hello#sendsms', as: 'sendsms'
 
   #post '' => 'say_hello#sum', as: 'sum'

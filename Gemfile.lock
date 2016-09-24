@@ -215,6 +215,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  actionpack
   bootstrap
   bootstrap-sass
   byebug
