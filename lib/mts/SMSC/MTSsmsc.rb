@@ -52,12 +52,12 @@ class MTSsmsc
             self    # delegate that will receive callbacks on MOs and DRs and other events
         )
         if @cou =1
-        EM.add_timer(2){ MTSsmsc.next }     # gets the messages from redis list and sends at each click of the EventMachine
+        EM.add_timer(1){ MTSsmsc.next }     # gets the messages from redis list and sends at each click of the EventMachine
 @cou = @cou+1
         end
       end
       puts "Disconnected. Reconnecting in 5 seconds.."
-      sleep 5
+      sleep 1
     #end
 
   end

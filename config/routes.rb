@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'say_hello/verify'
+
 
   get 'goods/testgood'
 
@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   get 'say_hello/SendSms'
   post '' => 'say_hello#sum', as: 'sum'
-  post '' => 'say_hello#verifycode', as: 'verifycode'
+  post 'say_hello/verifycode' => 'say_hello#verifycode', as: 'verifycode'
   post '' => 'say_hello#sendsms', as: 'sendsms'
-
+  get 'say_hello/verifycode'
   #post '' => 'say_hello#sum', as: 'sum'
   #post '' => 'say_hello#say', as: 'say'
 
