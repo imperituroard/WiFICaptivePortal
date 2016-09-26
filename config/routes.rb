@@ -1,5 +1,23 @@
 Rails.application.routes.draw do
 
+  root :to => 'say_hello#MTS_A_start_page', :id => '1'
+
+  get 'say_hello/MTS_A_start_page'
+
+  post '' => 'say_hello#MTS_check_msisdn_and_send_sms', as: 'MTS_check_msisdn_and_send_sms'
+  post 'say_hello/MTS_input_and_verify_code_success' => 'say_hello#MTS_input_and_verify_code_success', as: 'MTS_input_and_verify_code_success'
+  post 'say_hello/MTS_end_if_failed_auth_or_code_incorrect' => 'say_hello#MTS_end_if_failed_auth_or_code_incorrect', as: 'MTS_end_if_failed_auth_or_code_incorrect'
+  get 'say_hello/MTS_check_msisdn_and_send_sms'
+  get 'say_hello/MTS_input_and_verify_code_success'
+  get 'say_hello/MTS_end_if_failed_auth_or_code_incorrect'
+
+
+
+
+
+
+
+
 
   get 'goods/testgood'
 
@@ -10,21 +28,16 @@ Rails.application.routes.draw do
   get 'test/test'
 
   get 'say_hello/SendSms'
-  post '' => 'say_hello#sum', as: 'sum'
+
   post 'say_hello/verifycode' => 'say_hello#verifycode', as: 'verifycode'
   post '' => 'say_hello#sendsms', as: 'sendsms'
-  get 'say_hello/verifycode'
+
   #post '' => 'say_hello#sum', as: 'sum'
   #post '' => 'say_hello#say', as: 'say'
 
   #root :to => 'SayHello#say', :as => 'SayHello'
   #map.root :SayHello#say => 'say'
 
-  root :to => 'say_hello#say', :id => '1'
-
-  get 'say_hello/say'
-
-  get 'say_hello_controller/say'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,30 @@
+<%= form_tag '/' do %>
+
+    <html>
+    <head>
+      <%= stylesheet_link_tag "styles"%>
+      <%= stylesheet_link_tag "forphones"%>
+    </head>
+    <body>
+
+    <div id="content">
+      <hgroup>
+        <h1 id="site-logo">MTS Captive portal</h1>
+        <h2 id="site-description">Get high speed wifi access</h2>
+      </hgroup>
+      <!-- <nav>
+         <ul id="main-nav">
+           <li><a href="#">Home</a></li>
+         </ul>
+       </nav> -->
+      <p>Введите номер телефона</p>
+
+      <%= telephone_field_tag(:phone_number, @phone_number ) %>
+      <p></p>
+      <%= button_to "Отправить временный парmоль", :action => 'MTS_check_msisdn_and_send_sms' %>
+
+    </div>
+    </body>
+    </html>
+<% end %>
+<%= @mm%>

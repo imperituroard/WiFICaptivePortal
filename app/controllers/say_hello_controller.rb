@@ -29,73 +29,33 @@ class SayHelloController < ApplicationController
   @phone_input
   @phone_output
 
-
   def say
-    @phone = params["phone_number"]
-
-    @phone_input=@phone
-    #p @phone.remote_ip
-
-    #require 'SMS'
-    #@phone_number=@phone_output
-
-    if @phone_input != nil
-      #df=CPS_procedures.new
-      #puts @phone_input
-      #fe = df.GetSubscriber(@phone_input)
-      #param_smsc = Parameters.new
-      #config = param_smsc.smsc
-      #gw = SampleGateway.new
-      #gw.start(config)
-      #@phone_number=fe
-
-      df = WiFIPortalProcedures.new
-      #df.sendVerificationSMS(@phone_input)
-      #Url::to(['/products/index', 'id' => $someId])
-
-    end
 
   end
 
-  def sum
 
+  def MTS_A_start_page
+    @phone = params["phone_number"]
+    @phone_input=@phone
+  end
 
-
-
+  def MTS_check_msisdn_and_send_sms
 
     @phone = params["phone_number"]
-
     @phone_input=@phone
-    #p @phone.remote_ip
-
-    #require 'SMS'
-    #@phone_number=@phone_output
-
     if @phone_input != nil
-      #df=CPS_procedures.new
-      #puts @phone_input
-      #fe = df.GetSubscriber(@phone_input)
-      #param_smsc = Parameters.new
-      #config = param_smsc.smsc
-      #gw = SampleGateway.new
-      #gw.start(config)
-      #@phone_number=fe
-
       df = WiFIPortalProcedures.new
       cod=df.sendVerificationSMS(@phone_input, request.remote_ip)
+      if cod == 1
 
-if cod == 1
+      end
 
- end
     end
-
   end
 
-
-  def verifycode
+  def MTS_input_and_verify_code_success
     @verif = params["verifcode"]
     puts @verif
-
     @verif_input=@phone
     #redirect_to 'say_hello/verifycode'
     #p @phone.remote_ip
@@ -103,20 +63,29 @@ if cod == 1
     #require 'SMS'
     #@phone_number=@phone_output
     @title = "all work"
+    #redirect_to 'http://www.google.com'
 
-    if @verif_input != nil
-      #df=CPS_procedures.new
-      #puts @phone_input
-      #fe = df.GetSubscriber(@phone_input)
-      #param_smsc = Parameters.new
-      #config = param_smsc.smsc
-      #gw = SampleGateway.new
-      #gw.start(config)
-      #@phone_number=fe
-
-      df = WiFIPortalProcedures.new
-
+    if @verif != nil
+      ad = WiFIPortalProcedures.new
+      ard = ad.checkVerificationCode(request.remote_ip, @verif)
+      if ard !=0
+        redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
+        @phone_input="incorrect verification code"
+      end
+    else
+      redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
+      @phone_input="put your verification code"
     end
+
+    #if @verif_input != nil
+    #else
+    #  redirect_to 'say_hello/MTS_end_if_failed_auth_or_code_incorrect'
+    #end
+  end
+
+
+  def MTS_end_if_failed_auth_or_code_incorrect
+
   end
 
 
