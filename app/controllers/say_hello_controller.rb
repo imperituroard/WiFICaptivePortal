@@ -28,6 +28,7 @@ class SayHelloController < ApplicationController
 
   @phone_input
   @phone_output
+  @verifcode_input
 
   def say
 
@@ -35,12 +36,10 @@ class SayHelloController < ApplicationController
 
 
   def MTS_A_start_page
-    @phone = params["phone_number"]
-    @phone_input=@phone
+
   end
 
   def MTS_check_msisdn_and_send_sms
-
     @phone = params["phone_number"]
     @phone_input=@phone
     if @phone_input != nil
@@ -49,32 +48,31 @@ class SayHelloController < ApplicationController
       if cod == 1
 
       end
-
     end
   end
 
   def MTS_input_and_verify_code_success
-    @verif = params["verifcode"]
-    puts @verif
-    @verif_input=@phone
-    #redirect_to 'say_hello/verifycode'
-    #p @phone.remote_ip
+
+    @verificationcode_mts = params["verificationcode_mts"]
+    @verif_input=@verificationcode_mts
 
     #require 'SMS'
     #@phone_number=@phone_output
     @title = "all work"
     #redirect_to 'http://www.google.com'
 
-    if @verif != nil
+    if @verificationcode_mts != nil
       ad = WiFIPortalProcedures.new
-      ard = ad.checkVerificationCode(request.remote_ip, @verif)
+      p @verificationcode_mts
+      p request.remote_ip
+      p ard = ad.checkVerificationCode(request.remote_ip, @verificationcode_mts)
       if ard !=0
         redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
-        @phone_input="incorrect verification code"
+        @verificationcode_mts="incorrect verification code"
       end
     else
       redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
-      @phone_input="put your verification code"
+      @verificationcode_mts="put your verification code"
     end
 
     #if @verif_input != nil

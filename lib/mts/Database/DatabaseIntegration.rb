@@ -7,13 +7,15 @@ class DatabaseIntegration
 
 
   def selectCodeVerification(ipaddress)
+    p "ip" + ipaddress
     u=Parameters.new
     username_db1 = u.database_username
     password_db1 = u.database_password
     host_db1 = u.database_host
     client = Mysql2::Client.new(:host => host_db1, :username => username_db1, :password => password_db1)
     client.query("use mtsPortalWiFI", :cast => false)
-    client.query("SELECT verificationcode FROM users_wifi WHERE ipaddress=INET_NTOA('#{ipaddress}') ORDER BY time DESC LIMIT 1",:as => :array).each do |row|
+    client.query("SELECT verificationcode FROM users_wifi WHERE ipaddress=INET_ATON('#{ipaddress}') ORDER BY time DESC LIMIT 1",:as => :array).each do |row|
+      p "row" + row[0]
       return row [0]
     end
   end

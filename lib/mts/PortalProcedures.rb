@@ -10,7 +10,9 @@ class WiFIPortalProcedures
 
   def checkVerificationCode(ipaddress, verifinputcode)
     db=DatabaseIntegration.new
-    sended_code_from_db=db.selectCodeVerification(ipaddress)
+    p sended_code_from_db=db.selectCodeVerification(ipaddress)
+    #sended_code_from_db=sended_code_from_db.to_s
+    p "from_db" + sended_code_from_db[0].to_s
     if verifinputcode == sended_code_from_db
       sshauth=MTSssh.new
       sshauth.carcommand(ipaddress)

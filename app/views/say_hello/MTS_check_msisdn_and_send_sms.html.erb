@@ -1,3 +1,4 @@
+<%= form_tag '/say_hello/MTS_input_and_verify_code_success' do %>
 <html>
 <head>
   <title>МТС - WiFI portal</title>
@@ -33,7 +34,7 @@
        </ul>
      </nav> -->
     <p>Код подтверждения отправлен</p>
-    <%= text_area_tag(:verifcode, @verifcode ) %>
+    <%= text_area_tag(:verificationcode_mts, @verificationcode_mts ) %>
     <p></p>
     <%= button_to "Подтвердить", :action => 'MTS_input_and_verify_code_success' %>
 
@@ -45,11 +46,11 @@
     </section>
   </aside>
   -->
-  <footer id="footer">
-    СООО Мобильные ТелеСистемы. Все права защищены
-  </footer>
+
 </div>
 
 </body>
 
 </html>
+<% end %>
+<%= @mm%>
