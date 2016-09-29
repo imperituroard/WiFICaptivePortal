@@ -2,26 +2,27 @@
 
     <html>
     <head>
-      <%= stylesheet_link_tag "styles"%>
-      <%= stylesheet_link_tag "forphones"%>
+      <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+      <%= stylesheet_link_tag "stylesStep1"%>
     </head>
     <body>
 
     <div id="content">
+      <div id="flowcall"></div>
       <hgroup>
-        <h1 id="site-logo">MTS Captive portal</h1>
-        <h2 id="site-description">Get high speed wifi access</h2>
+        <h1 id="site-logo">Портал авторизации - MTS WiFI</h1>
       </hgroup>
       <!-- <nav>
          <ul id="main-nav">
            <li><a href="#">Home</a></li>
          </ul>
        </nav> -->
-      <p>Введите номер телефона</p>
+      <p>Введите номер телефона, на него прийдет СМС с кодом подтверждения</p>
+	  <p></p>
 
-      <%= telephone_field_tag(:phone_number, @phone_number ) %>
+      <div id="textfield"><%= telephone_field_tag(:phone_number, @phone_number ) %></div>
       <p></p>
-      <%= button_to "Отправить временный парmоль", :action => 'MTS_check_msisdn_and_send_sms' %>
+      <%= button_to "Отправить", {action: 'MTS_check_msisdn_and_send_sms'}, class: 'button_to' %>
 
     </div>
     </body>

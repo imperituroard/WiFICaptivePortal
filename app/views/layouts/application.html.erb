@@ -2,23 +2,17 @@
 <head>
   <title>МТС - WiFI portal</title>
   <nav>
-    <div class="logo-box">
+    <div  id="id_logo" class="logo-box">
       <h1 class="logo">
         <a href="/">
-          <img src="http://i6.imageban.ru/out/2016/09/11/2d547461679ab8a43336475d5026a873.png">
+          <div id="logo"></div>
         </a>
       </h1>
     </div>
-    <ul>
-      <li><a href="http://www.mts.by">Сайт МТС</a></li>
-      <li><a href="http://www.mts.by/contacts">Контакты</a></li>
-      <li><a href="https://internet.mts.by">Личный кабинет</a></li>
-      <li><a href="https://help.mts.by/hc/ru/requests/new">Онлайн поддержка </a></li>
-    </ul>
   </nav>
   <meta charset="UTF-8">
-  <%= stylesheet_link_tag "styles"%>
-  <%= stylesheet_link_tag "forphones"%>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+  <%= stylesheet_link_tag "stylesStep1"%>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -37,21 +31,16 @@
     </section>
   </aside>
   -->
-  <footer id="footer">
-    СООО Мобильные ТелеСистемы. Все права защищены
-  </footer>
+
 </div>
 </body>
 </html>
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MTSCaptivePortal2</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
 <body>
 <%= yield %>
+<footer id="footer">
+  СООО Мобильные ТелеСистемы. Все права защищены
+</footer>
 </body>
 </html>

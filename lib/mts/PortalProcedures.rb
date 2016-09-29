@@ -14,8 +14,9 @@ class WiFIPortalProcedures
     #sended_code_from_db=sended_code_from_db.to_s
     p "from_db" + sended_code_from_db[0].to_s
     if verifinputcode == sended_code_from_db
-      sshauth=MTSssh.new
-      sshauth.carcommand(ipaddress)
+      #uncomment when start procedures to car
+      #sshauth=MTSssh.new
+      #sshauth.carcommand(ipaddress)
       return 0
     else
       return 1
@@ -25,6 +26,8 @@ class WiFIPortalProcedures
 
 
   def sendVerificationSMS(msisdn, remoteip)
+    if msisdn != nil
+
     check=AdditionalMethods.new
     msisdn=check.msisdnverification(msisdn)
     if msisdn != 1
@@ -37,6 +40,7 @@ class WiFIPortalProcedures
         db.writeCodeVerification(id, remoteip, code, msisdn, "reserv2")
       else return 1
     end
+      end
   end
 
 

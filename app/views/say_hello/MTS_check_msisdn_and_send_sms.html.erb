@@ -5,8 +5,7 @@
 
 
   <meta charset="UTF-8">
-  <%= stylesheet_link_tag "styles"%>
-  <%= stylesheet_link_tag "forphones"%>
+  <%= stylesheet_link_tag "stylesStep2"%>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -24,9 +23,9 @@
   </header>
 
   <div id="content">
+    <div id="flowcall"></div>
     <hgroup>
-      <h1 id="site-logo">MTS Captive portal</h1>
-      <h2 id="site-description">Get high speed wifi access</h2>
+      <h1 id="site-logo">Портал авторизации - MTS WiFI</h1>
     </hgroup>
     <!-- <nav>
        <ul id="main-nav">
@@ -36,7 +35,8 @@
     <p>Код подтверждения отправлен</p>
     <%= text_area_tag(:verificationcode_mts, @verificationcode_mts ) %>
     <p></p>
-    <%= button_to "Подтвердить", :action => 'MTS_input_and_verify_code_success' %>
+    <%= button_to "Подтвердить", {action: 'MTS_input_and_verify_code_success'}, class: 'button_to' %>
+
 
   </div>
   <!--

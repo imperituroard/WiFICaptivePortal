@@ -12,7 +12,7 @@ require 'savon'
 require 'openssl'
 require 'rubygems'
 require 'nokogiri'
-require './lib/mts/CPS/cps_procedures'
+require './lib/mts/SOAP/cps_procedures'
 #require './lib/mts/SMSC/sms_samplegateway'
 
 require 'rubygems'
@@ -34,6 +34,10 @@ class SayHelloController < ApplicationController
 
   end
 
+  def put_code_again
+    redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
+  end
+
 
   def MTS_A_start_page
 
@@ -42,6 +46,7 @@ class SayHelloController < ApplicationController
   def MTS_check_msisdn_and_send_sms
     @phone = params["phone_number"]
     @phone_input=@phone
+    df = @phone_input
     if @phone_input != nil
       df = WiFIPortalProcedures.new
       cod=df.sendVerificationSMS(@phone_input, request.remote_ip)
@@ -66,8 +71,8 @@ class SayHelloController < ApplicationController
       p @verificationcode_mts
       p request.remote_ip
       p ard = ad.checkVerificationCode(request.remote_ip, @verificationcode_mts)
-      if ard !=0
-        redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
+      if ard ==1
+        redirect_to '/say_hello/MTS_end_if_failed_auth_or_code_incorrect'
         @verificationcode_mts="incorrect verification code"
       end
     else

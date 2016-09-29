@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'say_hello/MTS_check_msisdn_and_send_sms'
   get 'say_hello/MTS_input_and_verify_code_success'
   get 'say_hello/MTS_end_if_failed_auth_or_code_incorrect'
+  get 'say_hello/put_code_again'
 
 
 
