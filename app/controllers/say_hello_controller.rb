@@ -35,7 +35,7 @@ class SayHelloController < ApplicationController
   end
 
   def put_code_again
-    redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
+    redirect_to '/say_hello/MTS_A_start_page'
   end
 
 

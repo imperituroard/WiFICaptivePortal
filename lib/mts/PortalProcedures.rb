@@ -15,10 +15,19 @@ class WiFIPortalProcedures
     p "from_db" + sended_code_from_db[0].to_s
     if verifinputcode == sended_code_from_db
       #uncomment when start procedures to car
-      #sshauth=MTSssh.new
-      #sshauth.carcommand(ipaddress)
+      threadcar_success = Thread.new do
+        sshauth=MTSssh.new
+        sshauth.carcommand_logon(ipaddress)
+        sleep 1
+        sshauth.carcommand_logon1(ipaddress)
+        puts "dfgdfg"
+        sleep 3
+      end
+      #redirect_to 'http://www.belorusneft.by'
       return 0
     else
+      sshauth=MTSssh.new
+      sshauth.carcommand_logoff(ipaddress)
       return 1
       end
 

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '' => 'say_hello#MTS_check_msisdn_and_send_sms', as: 'MTS_check_msisdn_and_send_sms'
   post 'say_hello/MTS_input_and_verify_code_success' => 'say_hello#MTS_input_and_verify_code_success', as: 'MTS_input_and_verify_code_success'
   post 'say_hello/MTS_end_if_failed_auth_or_code_incorrect' => 'say_hello#MTS_end_if_failed_auth_or_code_incorrect', as: 'MTS_end_if_failed_auth_or_code_incorrect'
+  post 'say_hello/MTS_A_start_page' => 'say_hello#MTS_A_start_page', as: 'MTS_A_start_page'
   get 'say_hello/MTS_check_msisdn_and_send_sms'
   get 'say_hello/MTS_input_and_verify_code_success'
   get 'say_hello/MTS_end_if_failed_auth_or_code_incorrect'
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
 
   #root :to => 'SayHello#say', :as => 'SayHello'
   #map.root :SayHello#say => 'say'
+  get "*path" => redirect('/')
 
 
   # The priority is based upon order of creation: first created -> highest priority.
