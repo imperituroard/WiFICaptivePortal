@@ -5,6 +5,7 @@ require 'openssl'
 require 'savon'
 require 'rubygems'
 require 'nokogiri'
+require 'rails'
 #OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class CPS_procedures
@@ -23,17 +24,29 @@ class CPS_procedures
     return answer
   end
 
-  def ExecuteActionRequest(msisdn)
+  def ExecuteActionRequest_StartSession(msisdn)
     client = Savon.client do
       ssl_verify_mode :none
       wsdl "https://172.24.242.4:8443/ua/wsdl/UnifiedApi.wsdl"
       endpoint "http://172.24.242.4:8080/ua/soap"
       namespace "http://broadhop.com/unifiedapi/soap/types"
     end
+
+    message = {
+        :audit => {:id => "username", :comment => "comment"},
+        :code => "start-session",
+        :arg => [
+            {:code =>"ISG_IP", :value => "10.10.10.10"},
+            {:code =>"PORT_NUMBER", :value => "PBHK"},
+            {:code =>"type", :value => "isg|asr9k|null"},
+            {:code => "USER_NAME", :value => "123456789"},
+            {:code => "PASSWORD", :value => "password"}
+        ]
+    }
     response = client.call(:execute_action) do
-      message(networkId: msisdn)
+      message(message)
     end
-    answer = response.to_xml
+    puts answer = response.to_xml
     return answer
   end
 
