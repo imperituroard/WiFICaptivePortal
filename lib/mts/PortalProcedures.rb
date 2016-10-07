@@ -37,16 +37,18 @@ class WiFIPortalProcedures
   def sendVerificationSMS(msisdn, remoteip)
     if msisdn != nil
 
-    check=AdditionalMethods.new
-    msisdn=check.msisdnverification(msisdn)
+    #check=AdditionalMethods.new
+    #msisdn=check.msisdnverification(msisdn)
     if msisdn != 1
         code = rand(9999999)
         $verificationcode=code
+        thread_sms = Thread.new do
         df=MTSsmsc.new
         df.startSMSC(25,'MTS.WiFI', msisdn,"Your verification code for MTS WiFI: #{code}")
         id = rand(999999999999)+1+2
         db=DatabaseIntegration.new
         db.writeCodeVerification(id, remoteip, code, msisdn, "reserv2")
+        end
       else return 1
     end
       end

@@ -1,28 +1,55 @@
-<%= form_tag '/' do %>
+<script>
+  function controlF(x) {
+    var flag = true, txt = '';
+    if(document.getElementById('phone_number').value == '') { flag = false; txt += 'Вы не ввели номер телефона ! \r\n'; }
+    else {
+      if (/^\d[\d\(\)\ -]{4,14}\d$/.test(document.getElementById('phone_number').value) == false) {
+        flag = false;
+        txt = 'Номер телефона введен неправильно ! \r\n';
+      }
+    }
+    if(flag) x.submit();
+    else { alert(txt); }
+  }
+</script>
+
+
+<%= form_tag '/', :id=>"start_page", :onsubmit=>"controlF(this); return false;" do  |f|%>
 
     <html>
     <head>
       <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
       <%= stylesheet_link_tag "stylesStep1"%>
+      <script type="text/javascript" src="validation.js"></SCRIPT>
     </head>
     <body>
 
     <div id="content">
-      <div id="flowcall"></div>
+      <div id="input_your_number_step"><p>Введите ваш номер</p></div>
+      <div id="splitter_for_step_line_chevron"></div>
+
+      <div id="input_your_code_step"><p>Введите код подтверждения</p></div>
+      <div id="splitter_for_step_line_chevron"></div>
+
+      <div id="use_an_internet_step"><p>Пользуйтесь интернетом</p></div>
+      <div id="gorizontal_splitter"></div>
       <hgroup>
         <h1 id="site-logo">Портал авторизации - MTS WiFI</h1>
       </hgroup>
       <!-- <nav>
          <ul id="main-nav">
            <li><a href="#">Home</a></li>
-         </ul>
+         </ul>ytyty
        </nav> -->
       <p>Введите номер телефона, на него прийдет БЕСПЛАТНАЯ SMS с кодом подтверждения</p>
 	  <p></p>
 
-      <div id="textfield"><%= telephone_field_tag(:phone_number, @phone_number ) %></div>
+
+
+      <div id="textfield"><%= telephone_field_tag(:phone_number, @phone_number) %></div>
       <p></p>
       <%= button_to "Отправить", {action: 'MTS_check_msisdn_and_send_sms'}, class: 'button_to' %>
+
 
     </div>
     </body>
