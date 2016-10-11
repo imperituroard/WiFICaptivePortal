@@ -13,6 +13,8 @@ require 'openssl'
 require 'rubygems'
 require 'nokogiri'
 require './lib/mts/SOAP/cps_procedures'
+#require '../../../lib/mts/Database/DatabaseIntegration'
+require './lib/mts/Database/DatabaseIntegration'
 #require './lib/mts/SMSC/sms_samplegateway'
 
 require 'rubygems'
@@ -29,6 +31,7 @@ class SayHelloController < ApplicationController
   @phone_input
   @phone_output
   @verifcode_input
+  #@number_form = "Введите ваш номер"
 
   def say
 
@@ -40,10 +43,26 @@ class SayHelloController < ApplicationController
 
 
   def MTS_A_start_page
+    ddd = DatabaseIntegration.new
+  p  ds = ddd.checkifSMSwasSend(request.remote_ip)
+    if  ds == '3'
+      redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
+    end
+
+    @number_form = ddd.readTextPortal(1,1)
+    @code_form = ddd.readTextPortal(2,1)
+    @internet_form = ddd.readTextPortal(3,1)
+    @text_yourphone = ddd.readTextPortal(5,1)
+    @button_text = ddd.readTextPortal(6,1)
 
   end
 
   def MTS_check_msisdn_and_send_sms
+    ddd = DatabaseIntegration.new
+    @number_form = ddd.readTextPortal(1,1)
+    @code_form = ddd.readTextPortal(2,1)
+    @internet_form = ddd.readTextPortal(3,1)
+
     @phone = params["phone_number"]
     @phone_input=@phone
     df = @phone_input
@@ -57,6 +76,10 @@ class SayHelloController < ApplicationController
   end
 
   def MTS_input_and_verify_code_success
+    ddd = DatabaseIntegration.new
+    @number_form = ddd.readTextPortal(1,1)
+    @code_form = ddd.readTextPortal(2,1)
+    @internet_form = ddd.readTextPortal(3,1)
 
     @verificationcode_mts = params["verificationcode_mts"]
     @verif_input=@verificationcode_mts
@@ -74,7 +97,13 @@ class SayHelloController < ApplicationController
       if ard ==1
         redirect_to '/say_hello/MTS_end_if_failed_auth_or_code_incorrect'
         @verificationcode_mts="incorrect verification code"
+      else
+        thr=Thread.new() do
+          sleep 10
+          Launchy.open("http://www.belorusneft.by")
+        end
       end
+
     else
       redirect_to '/say_hello/MTS_check_msisdn_and_send_sms'
       @verificationcode_mts="put your verification code"
@@ -88,6 +117,10 @@ class SayHelloController < ApplicationController
 
 
   def MTS_end_if_failed_auth_or_code_incorrect
+    ddd = DatabaseIntegration.new
+    @number_form = ddd.readTextPortal(1,1)
+    @code_form = ddd.readTextPortal(2,1)
+    @internet_form = ddd.readTextPortal(3,1)
 
   end
 

@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( stylesStep1.css )
 Rails.application.config.assets.precompile += %w( stylesStep2.css )
 Rails.application.config.assets.precompile += %w( stylesStep3.css )
+Rails.application.config.assets.precompile += %w( stylesStep3_failed.css )

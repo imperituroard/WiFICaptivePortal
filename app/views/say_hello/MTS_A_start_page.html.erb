@@ -3,7 +3,7 @@
     var flag = true, txt = '';
     if(document.getElementById('phone_number').value == '') { flag = false; txt += 'Вы не ввели номер телефона ! \r\n'; }
     else {
-      if (/^\d[\d\(\)\ -]{4,14}\d$/.test(document.getElementById('phone_number').value) == false) {
+      if (/^[1-9][0-9]{10,14}$/.test(document.getElementById('phone_number').value) == false) {
         flag = false;
         txt = 'Номер телефона введен неправильно ! \r\n';
       }
@@ -13,8 +13,22 @@
   }
 </script>
 
+<script type="text/javascript">
+  function proverka(input) {
 
-<%= form_tag '/', :id=>"start_page", :onsubmit=>"controlF(this); return false;" do  |f|%>
+
+    var value = input.value;
+    var rep = /\d+$/;
+    if (rep.test(value)) {
+return 0;
+    } else {
+      value = value.replace(rep, '');
+      input.value = value;
+    }
+  }
+</script>
+
+<%= form_tag '/', :id=>"start_page", :onsubmit=>"controlF(this); return false;", :onkeyup=>"return proverka(this);" do  |f|%>
 
     <html>
     <head>
@@ -25,30 +39,33 @@
     <body>
 
     <div id="content">
-      <div id="input_your_number_step"><p>Введите ваш номер</p></div>
+      <div id="empty2"></div>
+      <div id="input_your_number_step"><p><%= "#{@number_form}" %></p></div>
       <div id="splitter_for_step_line_chevron"></div>
 
-      <div id="input_your_code_step"><p>Введите код подтверждения</p></div>
+      <div id="input_your_code_step"><p><%= "#{@code_form}" %></p></div>
       <div id="splitter_for_step_line_chevron"></div>
 
-      <div id="use_an_internet_step"><p>Пользуйтесь интернетом</p></div>
+      <div id="use_an_internet_step"><p><%= "#{@internet_form}" %></p></div>
       <div id="gorizontal_splitter"></div>
       <hgroup>
-        <h1 id="site-logo">Портал авторизации - MTS WiFI</h1>
+        <div id="empty"></div>
+       <!-- <h1 id="site-logo">Портал авторизации - MTS WiFI</h1> -->
       </hgroup>
       <!-- <nav>
          <ul id="main-nav">
            <li><a href="#">Home</a></li>
          </ul>ytyty
        </nav> -->
-      <p>Введите номер телефона, на него прийдет БЕСПЛАТНАЯ SMS с кодом подтверждения</p>
+     <!-- <p>Введите номер телефона, на него прийдет БЕСПЛАТНАЯ SMS с кодом подтверждения</p> -->
 	  <p></p>
 
-
-
-      <div id="textfield"><%= telephone_field_tag(:phone_number, @phone_number) %></div>
+      <hgroup id = "number_field">
+        <div id="textfield"><%= "#{@text_yourphone}" %></div>
+      <div id="textfield"><%= telephone_field_tag(:phone_number, @phone_number,  :onkeyup=>"return proverka(this);") %></div>
+      </hgroup>
       <p></p>
-      <%= button_to "Отправить", {action: 'MTS_check_msisdn_and_send_sms'}, class: 'button_to' %>
+      <%= button_to @button_text, {action: 'MTS_check_msisdn_and_send_sms'}, class: 'button_to' %>
 
 
     </div>

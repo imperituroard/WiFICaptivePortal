@@ -12,14 +12,16 @@ class WiFIPortalProcedures
     db=DatabaseIntegration.new
     p sended_code_from_db=db.selectCodeVerification(ipaddress)
     #sended_code_from_db=sended_code_from_db.to_s
+    msisdn= db.selectMsisdnVerification(ipaddress)
     p "from_db" + sended_code_from_db[0].to_s
     if verifinputcode == sended_code_from_db
       #uncomment when start procedures to car
       threadcar_success = Thread.new do
         sshauth=MTSssh.new
-        sshauth.carcommand_logon(ipaddress)
-        sleep 1
-        sshauth.carcommand_logon1(ipaddress)
+       sshauth.carcommand_autorize(ipaddress,msisdn,verifinputcode)
+       # sshauth.carcommand_logon(ipaddress)
+       # sleep 1
+     #  p sshauth.carcommand_logon1(ipaddress)
         puts "dfgdfg"
         sleep 3
       end
@@ -40,11 +42,15 @@ class WiFIPortalProcedures
     #check=AdditionalMethods.new
     #msisdn=check.msisdnverification(msisdn)
     if msisdn != 1
-        code = rand(9999999)
+        code = rand(9999)
         $verificationcode=code
         thread_sms = Thread.new do
+          ddd1 = DatabaseIntegration.new
+          db_text=ddd1.readTextPortal(4,1)
         df=MTSsmsc.new
-        df.startSMSC(25,'MTS.WiFI', msisdn,"Your verification code for MTS WiFI: #{code}")
+         textmessage =  "#{db_text}" + "#{code}"
+     #  p   message =textmessage.encode("UTF-2BE").force_encoding("BINARY")
+        df.startSMSC(25,'MTS.WiFI', msisdn, textmessage)
         id = rand(999999999999)+1+2
         db=DatabaseIntegration.new
         db.writeCodeVerification(id, remoteip, code, msisdn, "reserv2")

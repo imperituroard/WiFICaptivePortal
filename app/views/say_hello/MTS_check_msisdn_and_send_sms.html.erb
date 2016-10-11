@@ -3,7 +3,7 @@
     var flag = true, txt = '';
     if(document.getElementById('verificationcode_mts').value == '') { flag = false; txt += 'Вы не ввели код подтверждения ! \r\n'; }
     else {
-      if (/^\d[\d\(\)\ -]{4,14}\d$/.test(document.getElementById('verificationcode_mts').value) == false) {
+      if (/[0-9]{4}/.test(document.getElementById('verificationcode_mts').value) == false) {
         flag = false;
         txt = 'Неправильный формат ввода ! \r\n';
       }
@@ -40,16 +40,17 @@
   </header>
 
   <div id="content">
-    <div id="input_your_number_step"><p>Введите ваш номер</p></div>
+    <div id="input_your_number_step"><p><%= "#{@number_form}" %></p></div>
     <div id="splitter_for_step_line_chevron"></div>
 
-    <div id="input_your_code_step"><p>Введите код подтверждения</p></div>
+    <div id="input_your_code_step"><p><%= "#{@code_form}" %></p></div>
     <div id="splitter_for_step_line_chevron"></div>
 
-    <div id="use_an_internet_step"><p>Пользуйтесь интернетом</p></div>
+    <div id="use_an_internet_step"><p><%= "#{@internet_form}" %></p></div>
     <div id="gorizontal_splitter"></div>
     <hgroup>
-      <h1 id="site-logo">Портал авторизации - MTS WiFI</h1>
+      <div id="empty"></div>
+    <!--  <h1 id="site-logo">Портал авторизации - MTS WiFI</h1> -->
     </hgroup>
     <!-- <nav>
        <ul id="main-nav">

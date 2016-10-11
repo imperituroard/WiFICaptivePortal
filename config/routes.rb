@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   root :to => 'say_hello#MTS_A_start_page', :id => '1'
 
-  get 'say_hello/MTS_A_start_page'
+  #get 'say_hello/MTS_A_start_page', to 'say_hello#MTS_A_start_page'
+  get '/portal', to: 'say_hello#MTS_A_start_page', as: 'start'
 
   post '' => 'say_hello#MTS_check_msisdn_and_send_sms', as: 'MTS_check_msisdn_and_send_sms'
   post 'say_hello/MTS_input_and_verify_code_success' => 'say_hello#MTS_input_and_verify_code_success', as: 'MTS_input_and_verify_code_success'

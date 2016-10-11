@@ -2,6 +2,7 @@ require 'rubygems'
 require 'eventmachine'
 require 'smpp'
 require './config/Parameters/params'
+#require '../../../config/Parameters/params'
 
 LOGFILE = File.dirname(__FILE__) + "/sms_gateway.log"
 Smpp::Base.logger = Logger.new(LOGFILE)
