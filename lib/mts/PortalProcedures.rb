@@ -42,15 +42,18 @@ class WiFIPortalProcedures
     #check=AdditionalMethods.new
     #msisdn=check.msisdnverification(msisdn)
     if msisdn != 1
-        code = rand(9999)
+       rnd = Random.new
+       code = rnd.rand(1000..9999)
+       # code = rand(9999)
         $verificationcode=code
         thread_sms = Thread.new do
           ddd1 = DatabaseIntegration.new
           db_text=ddd1.readTextPortal(4,1)
+       p   db_alphanumber=ddd1.readTextPortal(7,1)
         df=MTSsmsc.new
          textmessage =  "#{db_text}" + "#{code}"
      #  p   message =textmessage.encode("UTF-2BE").force_encoding("BINARY")
-        df.startSMSC(25,'MTS.WiFI', msisdn, textmessage)
+        df.startSMSC(25, db_alphanumber, msisdn, textmessage)
         id = rand(999999999999)+1+2
         db=DatabaseIntegration.new
         db.writeCodeVerification(id, remoteip, code, msisdn, "reserv2")

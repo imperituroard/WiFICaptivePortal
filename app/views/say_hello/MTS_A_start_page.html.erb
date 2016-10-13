@@ -61,12 +61,27 @@ return 0;
 	  <p></p>
 
       <hgroup id = "number_field">
-        <div id="textfield"><%= "#{@text_yourphone}" %></div>
+        <div id="textfield"><p>Ваш<br>номер:</p></div>
+
+      <!--  <select id="textfield" class="combobox" name="otv" size=1 onChange="">
+          <option value="1">+375
+          <option value="2">+374
+          <option value="3">+7
+          <option value="4">+564
+          <option value="5">+123
+        </select>
+        -->
+
       <div id="textfield"><%= telephone_field_tag(:phone_number, @phone_number,  :onkeyup=>"return proverka(this);") %></div>
       </hgroup>
       <p></p>
       <%= button_to @button_text, {action: 'MTS_check_msisdn_and_send_sms'}, class: 'button_to' %>
 
+      <select id="language_change"  name="otv" size=1 onChange="">
+        <option value="1">Русский
+        <option value="2">English
+        <option value="3">Белорусский
+      </select>
 
     </div>
     </body>
