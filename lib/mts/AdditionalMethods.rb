@@ -28,7 +28,14 @@ class AdditionalMethods
     end
   end
 
-
+def verify_msisdn(msisdn)
+  msisdn1 = msisdn.gsub!('(','')
+  msisdn2 = msisdn1.gsub!(')','')
+  msisdn3 = msisdn2.gsub!('-','')
+  msisdn4 = msisdn3.gsub!(' ','')
+  msisdn5 = msisdn4.gsub!('+','')
+  return msisdn5
+end
 
   def remote_ip(env)
     remote_addr_list = env['REMOTE_ADDR'] && env['REMOTE_ADDR'].scan(/[^,\s]+/)

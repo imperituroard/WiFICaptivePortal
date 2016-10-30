@@ -1,0 +1,27 @@
+#content{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    font-size: 5px;
+    border-style: dashed;
+    border-color: #848D94;
+}
+#script_mikrotik{
+    margin-left: 10px;
+    font-size: 15px;
+}
+#name_of_head{
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-bottom: 0%;
+}
+.attention_change{
+    color: red;
+}
+
+#description{
+    margin-top: 5%;
+    margin-left: 15%;
+    font-size: 17px;
+    color: blue;
+}

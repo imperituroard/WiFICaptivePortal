@@ -1,31 +1,37 @@
-function check(){
-    JsHttpRequest.query(
-        'ajax.php?x=c'+Math.random(),
-        {
-            'a1': 1,
-            'a2': 11,
-            'a3': 111
-        },
-        //Вместо  1, 11 и 111 напиши document.getElementById('АйДи инпута').value;
-        function(result, errors) {
-            if(errors)alert(errors);
-            else{
-                if(result==0){alert("ERRRRRRRRRRROR!");return false;}
-            }
-        }
-    );
+function proverka(input) {
+    var value = input.value;
+    var rep = /\d+$/;
+    if (rep.test(value)) {
+        return 0;
+    } else {
+        value = value.replace(rep, '');
+        input.value = value;
+    }
 }
 
-function controlF(x) {
-    var flag = true, txt = '';
-    var input_phone = document.getElementById('phone_number').value
-    if(input_phone == '') { flag = false; txt = 'Вы не заполнили поле: phone_number \r\n'; }
-    else {
-        if (/^\d[\d\(\)\ -]{4,14}\d$/.test(document.getElementById('phone_number').value) == true) {
-            flag = false;
-            txt = 'Incorrect number \r\n';
-        }
+
+$(function() {
+    $('#popup').hide(); // ñêðûëè ôîí è âñïëûâàþùåå îêíî
+    $('#hide-layout').css({opacity: .5}); // êðîññáðàóçåðíàÿ ïðîçðà÷íîñòü
+    alignCenter($('#popup')); // öåíòðèðîâàëè îêíî
+    $(window).resize(function() {
+        alignCenter($('#popup')); // öåíòðèðîâàíèå ïðè ðåñàéçå îêíà
+    })
+    $('#click-me').click(function() {
+        $('#hide-layout, #popup').fadeIn(300); // ïëàâíî îòêðûâàåì
+    })
+    $('#btn-close, #hide-layout').click(function() {
+        $('#hide-layout, #popup').fadeOut(300); // ïëàâíî ñêðûâàåì
+    })
+    $('#btn-yes, #btn-no').click(function() {
+        alert('Âûïîëíèëè êàêîå-òî äåéñòâèå, çàòåì ñêðûâàåì îêíî...'); // ñäåëàëè ÷òî-òî...
+        $('#hide-layout, #popup').fadeOut(300); // ñêðûëè
+    })
+    // ôóíêöèÿ öåíòðèðîâàíèÿ
+    function alignCenter(elem) {
+        elem.css({
+            left: ($(window).width() - elem.width()) / 2 + 'px', // ïîëó÷àåì êîîðäèíàòó öåíòðà ïî øèðèíå
+            top: ($(window).height() - elem.height()) / 2 + 'px' // ïîëó÷àåì êîîðäèíàòó öåíòðà ïî âûñîòå
+        })
     }
-    if(flag) x.submit();
-    else { alert(txt); }
-}
+})

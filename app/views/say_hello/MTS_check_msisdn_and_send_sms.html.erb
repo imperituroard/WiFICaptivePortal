@@ -9,12 +9,20 @@
       }
     }
     if(flag) x.submit();
-    else { alert(txt); }
+    else {
+      swal({
+        title: "Error!",
+        text: txt,
+        type: "error",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "#e30613"
+      });
+    }
   }
 </script>
 
 
-<%= form_tag '/say_hello/MTS_input_and_verify_code_success', :onsubmit=>"controlF2(this); return false;"  do %>
+<%= form_tag '/say_hello/MTS_input_and_verify_code', :onsubmit=>"controlF2(this); return false;"  do %>
 <html>
 <head>
   <title>МТС - WiFI portal</title>
@@ -22,6 +30,10 @@
 
   <meta charset="UTF-8">
   <%= stylesheet_link_tag "stylesStep2"%>
+  <%= stylesheet_link_tag "sweet-alert"%>
+  <%= stylesheet_link_tag "fontTruthCYR"%>
+  <%= javascript_include_tag "sweet-alert.min"%>
+
   <script type="text/javascript" src="validation.js"></SCRIPT>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -40,6 +52,17 @@
   </header>
 
   <div id="content">
+
+    <nav>
+      <div  id="id_logo" class="logo-box">
+        <h1 class="logo">
+          <a href="/">
+            <div id="logo"> </div>
+          </a>
+        </h1>
+      </div>
+    </nav>
+
     <div id="input_your_number_step"><p><%= "#{@number_form}" %></p></div>
     <div id="splitter_for_step_line_chevron"></div>
 
@@ -60,7 +83,7 @@
     <p>Код подтверждения отправлен</p>
     <%= telephone_field_tag(:verificationcode_mts, @verificationcode_mts ) %>
     <p></p>
-    <%= button_to "Подтвердить", {action: 'MTS_input_and_verify_code_success'}, class: 'button_to' %>
+    <%= button_to "Подтвердить", {action: 'MTS_input_and_verify_code'}, class: 'button_to' %>
 
 
   </div>

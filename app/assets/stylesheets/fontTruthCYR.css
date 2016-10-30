@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'TruthCYR_Black';
+    src: url('fonts/TruthCYR-Black.eot');
+    src: local('☺'), url('fonts/TruthCYR-Black.woff') format('woff'), url('fonts/TruthCYR-Black.ttf') format('truetype'), url('fonts/TruthCYR-Black.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TruthCYR_Bold';
+    src: url('fonts/TruthCYR-Bold.eot');
+    src: local('☺'), url('fonts/TruthCYR-Bold.woff') format('woff'), url('fonts/TruthCYR-Bold.ttf') format('truetype'), url('fonts/TruthCYR-Bold.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TruthCYR_Light';
+    src: url('fonts/TruthCYR-Light.eot');
+    src: local('☺'), url('fonts/TruthCYR-Light.woff') format('woff'), url('fonts/TruthCYR-Light.ttf') format('truetype'), url('fonts/TruthCYR-Light.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TruthCYR_Ultra';
+    src: url('fonts/TruthCYR-Ultra.eot');
+    src: local('☺'), url('fonts/TruthCYR-Ultra.woff') format('woff'), url('fonts/TruthCYR-Ultra.ttf') format('truetype'), url('fonts/TruthCYR-Ultra.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TruthCYR_Thin';
+    src: url('fonts/TruthCYR-Thin.eot');
+    src: local('☺'), url('fonts/TruthCYR-Thin.woff') format('woff'), url('fonts/TruthCYR-Thin.ttf') format('truetype'), url('fonts/TruthCYR-Thin.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'TruthCYR_Medium';
+    src: url('fonts/TruthCYR-Medium.eot');
+    src: local('☺'), url('fonts/TruthCYR-Medium.woff') format('woff'), url('fonts/TruthCYR-Medium.ttf') format('truetype'), url('fonts/TruthCYR-Medium.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TruthCYR_Regular';
+    src: url('fonts/TruthCYR-Regular.eot');
+    src: local('☺'), url('fonts/TruthCYR-Regular.woff') format('woff'), url('fonts/TruthCYR-Regular.ttf') format('truetype'), url('fonts/TruthCYR-Regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

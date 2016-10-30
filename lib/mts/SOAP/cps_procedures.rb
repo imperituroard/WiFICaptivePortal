@@ -49,6 +49,29 @@ class CPS_procedures
     return answer
   end
 
+  def ExecuteActionRequest_UserLogon(msisdn, ipaddress, vcode, nasip)
+    client = Savon.client do
+      ssl_verify_mode :none
+      wsdl "https://172.24.242.4:8443/ua/wsdl/UnifiedApi.wsdl"
+      endpoint "http://172.24.242.4:8080/ua/soap"
+      namespace "http://broadhop.com/unifiedapi/soap/types"
+    end
+    message = {
+        :code => "userlogon",
+        :arg => [
+            {:code => "UserName", :value => "#{msisdn}"},
+            {:code =>"UserPassword", :value => "#{vcode}"},
+            {:code =>"NasIp", :value => "#{nasip}"},
+            {:code =>"SessionId", :value => "S#{ipaddress}:vrf-id=global"}
+        ]
+    }
+    response = client.call(:execute_action) do
+      message(message)
+    end
+    puts answer = response.to_xml
+    return answer
+  end
+
   def ExecuteActionRequest_LocationQuery(msisdn)
     client = Savon.client do
       ssl_verify_mode :none
