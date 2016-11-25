@@ -51,7 +51,7 @@ class DatabaseIntegration
     end
   end
 
-  def writeCodeVerification(userid, ipaddress, verificationcode, msisdn, auth_state = 0)
+  def writeCodeVerification(userid, ipaddress, verificationcode, msisdn, auth_state = 0, access_interface)
     u=Parameters.new
     username_db = u.database_username
     password_db = u.database_password
@@ -60,9 +60,11 @@ class DatabaseIntegration
 #client = Mysql2::Client.new(:default_file => '/Config/database.yml', :default_group => 'client')
 #result = client.query("SELECT * FROM table", :cast => false)
     client.query("use mtsPortalWiFI", :cast => false)
+
     currenttime=Time.now
-    client.query("INSERT INTO users_wifi  (UserID, time, ipaddress, verificationcode, msisdn, auth_state) VALUES(#{userid}, CURRENT_TIMESTAMP, INET_ATON('#{ipaddress}'), #{verificationcode}, #{msisdn}, #{auth_state})", :cast => false)
+    client.query("INSERT INTO users_wifi  (UserID, time, ipaddress, verificationcode, msisdn, auth_state, access_interface) VALUES(#{userid}, CURRENT_TIMESTAMP, INET_ATON('#{ipaddress}'), #{verificationcode}, #{msisdn}, #{auth_state}, '#{access_interface}')", :cast => false)
     client.close
+
   end
 
   def addText(id, company_id, text, description)

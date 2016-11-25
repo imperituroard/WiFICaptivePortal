@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 #for my first test commit
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails' #, '4.2.5.rc2'
+gem 'libv8'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.13', '< 0.5'
 # Use SCSS for stylesheets
@@ -16,6 +17,8 @@ gem 'nokogiri'
 gem 'simple_form'
 gem 'launchy'
 #gem 'ipaddr'
+gem 'net-telnet'
+#gem 'telnetdevice', :path => File.expand_path("..", __FILE__)
 #gem 'tk'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

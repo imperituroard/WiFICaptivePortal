@@ -1,0 +1,43 @@
+<%= form_tag action: 'Belneft_put_code_again' do %>
+
+    <html>
+    <head>
+      <%= stylesheet_link_tag "belneft_step3_failed"%>
+      <%= stylesheet_link_tag "belneft_body"%>
+    </head>
+    <body>
+
+    <div id="content">
+     <!-- <nav>
+        <div  id="id_logo" class="logo-box">
+          <h1 class="logo">
+            <a href="/">
+              <div id="logo"> </div>
+            </a>
+          </h1>
+        </div>
+      </nav>
+
+      <div id="input_your_number_step"><p><%= "#{@number_form}" %></p></div>
+      <div id="splitter_for_step_line_chevron"></div>
+
+      <div id="input_your_code_step"><p><%= "#{@code_form}" %></p></div>
+      <div id="splitter_for_step_line_chevron"></div>
+
+      <div id="use_an_internet_step"><p><%= "#{@internet_form}" %></p></div>
+      <div id="gorizontal_splitter"></div>
+-->
+      <!-- <nav>
+         <ul id="main-nav">
+           <li><a href="#">Home</a></li>
+         </ul>
+       </nav> -->
+      <p id = "finishfailed">ОШИБКА</p>
+      <p id = "finishfailed2">Попробуйте снова.</p>
+      <%= button_to "Повторить", {action: 'Belneft_put_code_again'}, method: 'post', class: 'button_to1' %>
+
+    </div>
+    </body>
+    </html>
+<% end %>
+<%= @mm%>

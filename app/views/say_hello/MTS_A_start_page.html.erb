@@ -2,6 +2,7 @@
 
     <html>
     <head>
+      <title>??? - WiFI portal</title>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -94,13 +95,10 @@
           });
         </script>
 
-        <script type="text/javascript">
-          $<%=@browserdescription%>  = platform.description
-        </script>
 
-      <div id="textfield" class="phone_number"><%= telephone_field_tag(:phone_number, @phone_number, :type=>"tel", :placeholder=>"+375 (__) ___ __ __") %></div>
+      <div id="textfield" class="phone_number"></div>
       </hgroup>
-
+      <%= telephone_field_tag(:phone_number, @phone_number, :type=>"tel", :placeholder=>"+375 (__) ___ __ __", :id=>"phone_number") %>
       <%= button_to @button_text, {action: 'MTS_check_msisdn_and_send_sms'}, class: 'button_to', id: 'user_phone2' %>
       <select id="language_change"  name="otv" size=1 type="text">
         <option value="1"><%= "#{@russian_language}"%>

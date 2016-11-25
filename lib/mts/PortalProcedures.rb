@@ -65,8 +65,13 @@ class WiFIPortalProcedures
      #  p   message =textmessage.encode("UTF-2BE").force_encoding("BINARY")
         df.startSMSC(25, db_alphanumber, msisdn, textmessage)
         id = rand(999999999999)+1+2
+          iwag_telnet = MTStelnet.new
+          p "32412341234"
+        p  iwag_access_interface = iwag_telnet.return_iwag_access_interface(remoteip)
+
         db=DatabaseIntegration.new
-        db.writeCodeVerification(id, remoteip, code, msisdn, 0)
+          p "wwwwwwwwwwwwwwww"
+        db.writeCodeVerification(id, remoteip, code, msisdn, 0, iwag_access_interface)
         end
       else return 1
     end

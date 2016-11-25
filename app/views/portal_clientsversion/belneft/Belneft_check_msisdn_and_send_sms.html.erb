@@ -1,0 +1,115 @@
+<script>
+  function controlF2(x) {
+    var flag = true, txt = '';
+    if(document.getElementById('verificationcode_belneft').value == '') { flag = false; txt += 'Вы не ввели код подтверждения ! \r\n'; }
+    else {
+      if (/[0-9]{4}/.test(document.getElementById('verificationcode_belneft').value) == false) {
+        flag = false;
+        txt = 'Неправильный формат ввода ! \r\n';
+      }
+    }
+    if(flag) x.submit();
+    else {
+      swal({
+        title: "Error!",
+        text: txt,
+        type: "error",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "#323131"
+      });
+    }
+  }
+</script>
+
+
+<%= form_tag action: 'Belneft_input_and_verify_code', :method => "post", :onsubmit=>"controlF2(this); return false;" do %>
+    <html>
+    <head>
+      <title>Belorusneft - WiFI portal</title>
+
+
+      <meta charset="UTF-8">
+      <%= stylesheet_link_tag "belneft_step2"%>
+      <%= stylesheet_link_tag "belneft_body"%>
+      <%= stylesheet_link_tag "sweet-alert"%>
+      <%= stylesheet_link_tag "fontTruthCYR"%>
+      <%= javascript_include_tag "sweet-alert.min"%>
+
+
+      <%= javascript_include_tag "jquery-3.1.1"%>
+      <%= javascript_include_tag "jquery.maskedinput-1.4.1"%>
+      <script type="text/javascript" src="validation.js"></SCRIPT>
+      <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      <!--[if lt IE 9]>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+      <![endif]-->
+
+    </head>
+
+    <body text-align:center>
+
+    <div id="pagewrap">
+      <header id="header">
+
+      </header>
+
+      <div id="content">
+
+      <!--  <nav>
+          <div  id="id_logo" class="logo-box">
+            <h1 class="logo">
+              <a href="/">
+                <div id="logo"> </div>
+              </a>
+            </h1>
+          </div>
+        </nav>
+
+        <div id="input_your_number_step"><p><%= "#{@number_form}" %></p></div>
+        <div id="splitter_for_step_line_chevron"></div>
+
+        <div id="input_your_code_step"><p><%= "#{@code_form}" %></p></div>
+        <div id="splitter_for_step_line_chevron"></div>
+
+        <div id="use_an_internet_step"><p><%= "#{@internet_form}" %></p></div>
+        <div id="gorizontal_splitter"></div>
+        -->
+        <hgroup>
+          <div id="empty"></div>
+          <!--  <h1 id="site-logo">Портал авторизации - MTS WiFI</h1> -->
+        </hgroup>
+        <!-- <nav>
+           <ul id="main-nav">
+             <li><a href="#">Home</a></li>
+           </ul>
+         </nav> -->
+        <script type="text/javascript">
+          $(function(){
+            $("#verificationcode_belneft").mask("9999");
+          });
+        </script>
+
+        <div id="text_belneft_verification_code_send"><br>Код подтверждения отправлен<br></div>
+        <%= telephone_field_tag(:verificationcode_belneft, @verificationcode_belneft, :id=>"verificationcode_belneft", :placeholder=>"XXXX", method: 'post') %>
+        <p></p>
+        <%= button_to "Подтвердить", {action: 'Belneft_input_and_verify_code'}, method: 'post', class: 'button_to' %>
+
+
+      </div>
+      <!--
+      <aside id="sidebar">
+        <section class="widget">
+          widget
+        </section>
+      </aside>
+      -->
+
+    </div>
+
+    </body>
+
+    </html>
+<% end %>
+<%= @mm%>

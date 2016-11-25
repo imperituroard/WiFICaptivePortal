@@ -1,0 +1,64 @@
+@media screen and (max-width: 980px) {
+
+    body {
+        /* background-image: url("login-bg-t-m-lg.jpg");*/
+        background-size: cover;
+        background-color: #ffffff;
+    }
+
+    #site-description {
+        margin: 0 0 15px;
+        position: static;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    #content {
+        width: 100%;
+        float: none;
+        margin: 20px 0;
+        margin-left: 0%; /* Отступ слева */
+        margin-right: 0%;
+        margin-top: 0%;
+        margin-bottom: 0%;
+        height: 700px;
+        border-style: solid;
+    }
+
+    #phone_number{
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        height: 80px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    #site-logo {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        color: #000000;
+        font-size: 30px;
+    }
+
+    #footer {
+        clear: both;
+        position: absolute;
+        margin-bottom: 0%;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        border-color: #ffffff;
+        border-style: none;
+        padding: 9px;
+        background-color: #ffffff;
+        color: gray;
+        /*   box-shadow: 10px 0px 0px #cc0000; */
+        opacity: 0.7;
+        border-radius: 0px;
+    }
+
+
+
+}

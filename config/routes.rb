@@ -1,5 +1,46 @@
 Rails.application.routes.draw do
 
+  namespace :lukoil_test do
+    root :to => 'testt#testt_A_start_page'
+    get 'testt/testt_A_start_page'
+    get 'testt/testt_A_start_page' => 'testt#testt_A_start_page', as: 'testt_A_start_page'
+    get 'testt/testt_check_msisdn_and_send_sms' => 'testt#testt_check_msisdn_and_send_sms', as: 'testt_check_msisdn_and_send_sms'
+    get 'testt/testt_input_and_verify_code_success' => 'testt#testt_input_and_verify_code_success', as: 'testt_input_and_verify_code_success'
+    get 'testt/testt_end_if_failed_auth_or_code_incorrect' => 'testt#testt_end_if_failed_auth_or_code_incorrect', as: 'testt_end_if_failed_auth_or_code_incorrect'
+    # get 'belneft/Belneft_input_and_verify_code_success' => 'belneft#Belneft_input_and_verify_code_success', as: 'Belneft_input_and_verify_code_success'
+    get 'testt/testt_put_code_again'  => 'testt#testt_put_code_again', as: 'testt_put_code_again'
+    post '/' => 'testt#testt_check_msisdn_and_send_sms'
+    post 'testt/testt_check_msisdn_and_send_sms'  => 'testt#testt_check_msisdn_and_send_sms'
+    post 'testt/testt_input_and_verify_code'  => 'testt#testt_input_and_verify_code'
+    post 'testt/testt_put_code_again'  => 'testt#testt_put_code_again'
+  end
+
+  namespace :portal_clientsversion do
+    #root :to => 'lukoil#Lukoil_A_start_page'
+    get 'lukoil/Lukoil_A_start_page'
+  end
+
+  namespace :portal_clientsversion do
+    post 'belneft/Belneft_intro' => 'belneft#Belneft_intro'
+    post 'belneft/Belneft_A_start_page' => 'belneft#Belneft_A_start_page'
+    post 'belneft/Belneft_check_msisdn_and_send_sms'  => 'belneft#Belneft_check_msisdn_and_send_sms'
+    post 'belneft/Belneft_input_and_verify_code'  => 'belneft#Belneft_input_and_verify_code'
+    post 'belneft/Belneft_input_and_verify_code_success' => 'belneft#Belneft_input_and_verify_code_success'
+    post 'belneft/Belneft_end_if_failed_auth_or_code_incorrect' => 'belneft#Belneft_end_if_failed_auth_or_code_incorrect'
+    post 'belneft/Belneft_put_code_again'  => 'belneft#Belneft_put_code_again'
+
+    post 'lukoil/Lukoil_A_start_page' => 'lukoil#Lukoil_A_start_page'
+    post 'lukoil/Lukoil_check_msisdn_and_send_sms' => 'lukoil#Lukoil_check_msisdn_and_send_sms'
+    post 'lukoil/Lukoil_input_and_verify_code' => 'lukoil#Lukoil_input_and_verify_code'
+    post 'lukoil/Lukoil_end_if_failed_auth_or_code_incorrect' => 'lukoil#Lukoil_end_if_failed_auth_or_code_incorrect'
+    post 'lukoil/Lukoil_input_and_verify_code_success' => 'lukoil#Lukoil_input_and_verify_code_success'
+    post 'lukoil/Lukoil_put_code_again' => 'lukoil#Lukoil_put_code_again'
+
+  end
+
+  post '/portal_clientsversion/belneft/Belneft_A_start_page' => 'belneft#Belneft_A_start_page'
+  post '/portal_clientsversion/lukoil/Lukoil_A_start_page' => 'lukoil#Lukoil_A_start_page'
+
   namespace :subscriber do
     root :to => 'subscribe#login'
     get 'subscribe/login'
@@ -9,6 +50,7 @@ Rails.application.routes.draw do
     root :to => 'engineering#open'
     get 'engineering/open'
     get 'engineering/open' => 'engineering#open', as: 'open'
+    get 'engineering/add_ap_to_hub1' => 'engineering#add_ap_to_hub1'
   end
 
 
@@ -45,6 +87,7 @@ Rails.application.routes.draw do
   get 'say_hello/MTS_input_and_verify_code_success' => 'say_hello#MTS_input_and_verify_code_success', as: 'MTS_input_and_verify_code_success'
   get 'say_hello/MTS_input_and_verify_code' => 'say_hello#MTS_input_and_verify_code', as: 'MTS_input_and_verify_code'
   get 'say_hello/put_code_again'  => 'say_hello#put_code_again'
+
   post '/' => 'say_hello#MTS_check_msisdn_and_send_sms'
   post 'say_hello/MTS_check_msisdn_and_send_sms'  => 'say_hello#MTS_check_msisdn_and_send_sms'
   post 'say_hello/MTS_input_and_verify_code'  => 'say_hello#MTS_input_and_verify_code'

@@ -1,0 +1,46 @@
+<%= form_tag '/lukoil_test' do %>
+
+    <html>
+    <head>
+      <%= stylesheet_link_tag "stylesStep3"%>
+    </head>
+    <body>
+
+    <div id="content">
+
+      <nav>
+        <div  id="id_logo" class="logo-box">
+          <h1 class="logo">
+            <a href="/">
+              <div id="logo"> </div>
+            </a>
+          </h1>
+        </div>
+      </nav>
+
+      <div id="input_your_number_step"><p><%= "#{@number_form}" %></p></div>
+      <div id="splitter_for_step_line_chevron"></div>
+
+      <div id="input_your_code_step"><p><%= "#{@code_form}" %></p></div>
+      <div id="splitter_for_step_line_chevron"></div>
+
+      <div id="use_an_internet_step"><p><%= "#{@internet_form}" %></p></div>
+      <div id="gorizontal_splitter"></div>
+
+      <meta http-equiv="refresh" content="4; URL=http://lukoil.of.by/" />
+      <!-- <nav>
+         <ul id="main-nav">
+           <li><a href="#">Home</a></li>
+         </ul>
+       </nav> -->
+      <p id = "finishsuccess"><%= "#{@word_success}" %></p>
+      <p id = "finishsuccess1"><%= "#{@you_may_use_an_internet}" %></p>
+
+
+
+
+    </div>
+    </body>
+    </html>
+<% end %>
+<%= @mm%>

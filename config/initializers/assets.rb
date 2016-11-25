@@ -28,6 +28,16 @@ Rails.application.config.assets.precompile += %w( steps/step1_mobile.css )
 Rails.application.config.assets.precompile += %w( fontTruthCYR.css )
 Rails.application.config.assets.precompile += %w( sweet-alert.css )
 
+Rails.application.config.assets.precompile += %w( belneft_step1.css )
+Rails.application.config.assets.precompile += %w( steps/belneft_step1_pc.css )
+Rails.application.config.assets.precompile += %w( steps/belneft_step1_tablet.css )
+Rails.application.config.assets.precompile += %w( steps/belneft_step1_mobile.css )
+Rails.application.config.assets.precompile += %w( belneft_step2.css )
+Rails.application.config.assets.precompile += %w( belneft_step3.css )
+Rails.application.config.assets.precompile += %w( belneft_step3_failed.css )
+Rails.application.config.assets.precompile += %w( belneft_intro.css )
+Rails.application.config.assets.precompile += %w( belneft_body.css )
+
 #enginnering
 Rails.application.config.assets.precompile += %w( style_engineering_room.css )
 

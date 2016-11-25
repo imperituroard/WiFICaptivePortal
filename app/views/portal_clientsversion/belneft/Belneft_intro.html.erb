@@ -1,0 +1,20 @@
+
+<!--#:action => 'Belneft_A_start_page', :controller=>'belneft', :method => "post"-->
+    <html>
+    <head>
+      <title>Belorusneft - WiFI portal</title>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+      <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+      <%= stylesheet_link_tag "belneft_intro"%>
+      <%= stylesheet_link_tag "belneft_body"%>
+
+    </head>
+    <body>
+      <div id="fantom"></div>
+
+      <%= button_to "Вход", {action: 'Belneft_A_start_page', controller: 'belneft'}, method: 'post', class: 'button_to' %>
+
+    </body>
+    </html>

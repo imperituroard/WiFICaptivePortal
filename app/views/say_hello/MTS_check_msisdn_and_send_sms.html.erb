@@ -34,6 +34,9 @@
   <%= stylesheet_link_tag "fontTruthCYR"%>
   <%= javascript_include_tag "sweet-alert.min"%>
 
+
+  <%= javascript_include_tag "jquery-3.1.1"%>
+  <%= javascript_include_tag "jquery.maskedinput-1.4.1"%>
   <script type="text/javascript" src="validation.js"></SCRIPT>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -80,8 +83,14 @@
          <li><a href="#">Home</a></li>
        </ul>
      </nav> -->
+    <script type="text/javascript">
+      $(function(){
+        $("#verificationcode_mts").mask("9999");
+      });
+    </script>
+
     <p>Код подтверждения отправлен</p>
-    <%= telephone_field_tag(:verificationcode_mts, @verificationcode_mts ) %>
+    <%= telephone_field_tag(:verificationcode_mts, @verificationcode_mts, :id=>"verificationcode_mts", :placeholder=>"XXXX" ) %>
     <p></p>
     <%= button_to "Подтвердить", {action: 'MTS_input_and_verify_code'}, class: 'button_to' %>
 
