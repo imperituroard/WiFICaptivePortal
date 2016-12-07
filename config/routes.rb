@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'phone/phonecodes'
+
+  get 'phone/phone-codes'
+
+  get 'test/test'
+
   namespace :lukoil_test do
     root :to => 'testt#testt_A_start_page'
     get 'testt/testt_A_start_page'
@@ -38,7 +44,7 @@ Rails.application.routes.draw do
 
   end
 
-  post '/portal_clientsversion/belneft/Belneft_A_start_page' => 'belneft#Belneft_A_start_page'
+  post '/portal_clientsversion/belneft/Belneft_A_start_page'  => 'belneft#Belneft_A_start_page'
   post '/portal_clientsversion/lukoil/Lukoil_A_start_page' => 'lukoil#Lukoil_A_start_page'
 
   namespace :subscriber do
@@ -51,9 +57,10 @@ Rails.application.routes.draw do
     get 'engineering/open'
     get 'engineering/open' => 'engineering#open', as: 'open'
     get 'engineering/add_ap_to_hub1' => 'engineering#add_ap_to_hub1'
+    get :download
   end
 
-
+ # get '/engineer'
 
   get 'login/start'
 
@@ -76,7 +83,8 @@ Rails.application.routes.draw do
   #end
 
  # get 'private_room/Login'
-
+  get 'test/test' => 'test#test', as: 'test'
+  get 'phone/phonecodes' => 'phone#phonecodes', as: 'phonecodes'
   #root :to => 'say_hello#MTS_A_start_page', :id => '1'
   root :to => 'login#start', :id => '2'
  # match '/engineer' => 'engineer#open', via: :all

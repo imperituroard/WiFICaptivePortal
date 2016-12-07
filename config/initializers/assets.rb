@@ -38,6 +38,9 @@ Rails.application.config.assets.precompile += %w( belneft_step3_failed.css )
 Rails.application.config.assets.precompile += %w( belneft_intro.css )
 Rails.application.config.assets.precompile += %w( belneft_body.css )
 
+Rails.application.config.assets.precompile += %w( phone-codes.json )
+Rails.application.config.assets.precompile += %w( phones-ru.json )
+
 #enginnering
 Rails.application.config.assets.precompile += %w( style_engineering_room.css )
 
@@ -52,5 +55,10 @@ Rails.application.config.assets.precompile += %w( jquery.maskedinput-1.3.1.min.j
 Rails.application.config.assets.precompile += %w( script.js )
 Rails.application.config.assets.precompile += %w( is.mobile.js )
 Rails.application.config.assets.precompile += %w( jquery.maskedinput-1.4.1.js )
+
+#jquery lib
+Rails.application.config.assets.precompile += %w( jquery.inputmask.bundle.min.js )
+Rails.application.config.assets.precompile += %w( jquery.inputmask-multi.min.js )
+
 
 Rails.application.config.assets.precompile += %w( platform.js )

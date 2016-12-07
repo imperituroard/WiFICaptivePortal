@@ -34,6 +34,7 @@ def verify_msisdn(msisdn)
   msisdn3 = msisdn2.gsub!('-','')
   msisdn4 = msisdn3.gsub!(' ','')
   msisdn5 = msisdn4.gsub!('+','')
+  p msisdn5
   return msisdn5
 end
 

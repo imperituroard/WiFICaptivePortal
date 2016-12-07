@@ -28,7 +28,9 @@
 .attention_change{
     color: red;
 }
-
+#empty{
+    height: 15px;
+}
 #description{
     margin-top: 5%;
     margin-left: 15%;
